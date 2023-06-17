@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Current Day and Time</title>
+	</head>
+	<body>
+		<h2 id="dayOfWeek_wrapper"></h2>
+		<h3 id="time_wrapper"></h3>
+
+		<script>
+			const printCurrentDate = () => {
+				const dayOfWeekWrapper = document.getElementById('dayOfWeek_wrapper');
+				const timeWrapper = document.getElementById('time_wrapper');
+
+				const today = new Date();
+				const day = today.getDay();
+				const daylist = [
+					'Sunday',
+					'Monday',
+					'Tuesday',
+					'Wednesday ',
+					'Thursday',
+					'Friday',
+					'Saturday',
+				];
+				let hour = today.getHours();
+				const minute = today.getMinutes();
+				const second = today.getSeconds();
+				let prepand = hour >= 12 ? ' PM ' : ' AM ';
+				hour = hour >= 12 ? hour - 12 : hour;
+				if (hour === 0 && prepand === ' PM ') {
+					if (minute === 0 && second === 0) {
+						hour = 12;
+						prepand = ' Noon';
+					} else {
+						hour = 12;
+						prepand = ' PM';
+					}
+				}
+				if (hour === 0 && prepand === ' AM ') {
+					if (minute === 0 && second === 0) {
+						hour = 12;
+						prepand = ' Midnight';
+					} else {
+						hour = 12;
+						prepand = ' AM';
+					}
+				}
+
+				dayOfWeekWrapper.innerHTML = `Today is : ${daylist[day]}.`;
+				timeWrapper.innerHTML = `Current Time : ${hour}${prepand} : ${minute} : ${second}`;
+			};
+
+			printCurrentDate();
+		</script>
+	</body>
+</html>
