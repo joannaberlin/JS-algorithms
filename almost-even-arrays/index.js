@@ -38,6 +38,17 @@ var splitInteger = function (num, parts) {
 	}
 };
 
+// Best approach to solve this kata
+// function splitInteger(num, parts) {
+// 	const remainder = num % parts;
+// 	const int = Math.floor(num / parts);
+
+// 	return [
+// 		...new Array(parts - remainder).fill(int),
+// 		...new Array(remainder).fill(int + 1),
+// 	];
+// }
+
 splitInteger(10, 1);
 //[10]
 splitInteger(2, 2);
